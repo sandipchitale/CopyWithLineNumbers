@@ -1,0 +1,61 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>sandipchitale.copywithlinenumbers</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Copy with Line Numbers</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="sandipchitale@gmail.com" url="https://github.com/sandipchitale/copywithlinenumbers">Sandip Chitale</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    Copy selected lines with line number (and file path).
+    <ul>
+    <li>Copy With Line Numbers: Without Path</li>
+    <li>Copy With Line Numbers: With Full Path</li>
+    <li>Copy With Line Numbers: With Relative Path</li>
+    <li>Copy With Line Numbers: With File Name</li>
+    </ul>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+        <action id="sandipchitale.CopyWithLineNumbersAction"
+                class="sandipchitale.CopyWithLineNumbersAction"
+                text="Copy with Line Numbers"
+                description="Copy with line numbers">
+            <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="CopyAsPlainText"/>
+        </action>
+        <action id="sandipchitale.CopyWithLineNumbersWithFileNameAction"
+                class="sandipchitale.CopyWithLineNumbersWithFileNameAction"
+                text="Copy with File Name and Line Numbers "
+                description="Copy with file name and line numbers">
+            <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="sandipchitale.CopyWithLineNumbersAction"/>
+        </action>
+        <action id="sandipchitale.CopyWithLineNumbersWithFullFilePathAction"
+                class="sandipchitale.CopyWithLineNumbersWithFullFilePathAction"
+                text="Copy with Full File Path and Line Numbers"
+                description="Copy with full File Path and line numbers">
+            <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="sandipchitale.CopyWithLineNumbersWithFileNameAction"/>
+        </action>
+        <action id="sandipchitale.CopyWithLineNumbersWithRelativeFilePathAction"
+                class="sandipchitale.CopyWithLineNumbersWithRelativeFilePathAction"
+                text="Copy with Relative File Path and Line Numbers"
+                description="Copy with relative file path with line numbers">
+            <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="sandipchitale.CopyWithLineNumbersWithFullFilePathAction"/>
+        </action>
+    </actions>
+</idea-plugin>
