@@ -21,7 +21,7 @@
     <li>Copy With Line Numbers: With Relative Path</li>
     <li>Copy With Line Numbers: With File Name</li>
     </ul>
-  ]]></description>
+]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -29,8 +29,7 @@
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-    <extensions defaultExtensionNs="com.intellij">
-    </extensions>
+    <extensions defaultExtensionNs="com.intellij"/>
 
     <actions>
         <action id="sandipchitale.CopyWithLineNumbersAction"

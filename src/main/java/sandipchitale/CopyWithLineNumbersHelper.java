@@ -1,5 +1,6 @@
 package sandipchitale;
 
+import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
@@ -23,13 +24,16 @@ class CopyWithLineNumbersHelper {
 
     static void copyWithLineNumbers(@Nullable Project project, Editor editor, CopyType copyWithLineNumbers, VirtualFile virtualFile) {
         SelectionModel selectionModel = editor.getSelectionModel();
-        int startLine = selectionModel.getSelectionStartPosition().getLine();
-        int endLine = selectionModel.getSelectionEndPosition().getLine();
+        // Convert to lines as per LogicalPosition
+        int startLine = editor.offsetToLogicalPosition(selectionModel.getSelectionStart()).line;
+        int endLine = editor.offsetToLogicalPosition(selectionModel.getSelectionEnd()).line;
 
-        int lineStartOffset = editor.getDocument().getLineStartOffset(startLine);
-        int lineEndOffset = editor.getDocument().getLineEndOffset(endLine);
+        Document document = editor.getDocument();
 
-        String text = editor.getDocument().getText(new TextRange(lineStartOffset, lineEndOffset));
+        int lineStartOffset = document.getLineStartOffset(startLine);
+        int lineEndOffset = document.getLineEndOffset(endLine);
+
+        String text = document.getText(new TextRange(lineStartOffset, lineEndOffset));
         String[] lines = text.split("\n");
 
         StringBuilder sb = new StringBuilder();
