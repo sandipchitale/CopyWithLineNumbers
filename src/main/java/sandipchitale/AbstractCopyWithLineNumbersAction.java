@@ -1,14 +1,10 @@
 package sandipchitale;
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.editor.Editor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
-
 
 public abstract class AbstractCopyWithLineNumbersAction extends AnAction {
     private final CopyWithLineNumbersHelper.CopyType copyType;
@@ -34,5 +30,10 @@ public abstract class AbstractCopyWithLineNumbersAction extends AnAction {
     @Override
     public void update(@NotNull AnActionEvent e) {
         e.getPresentation().setEnabled(CommonDataKeys.EDITOR.getData(e.getDataContext()) != null);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return super.getActionUpdateThread();
     }
 }
