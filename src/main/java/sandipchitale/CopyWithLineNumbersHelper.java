@@ -49,11 +49,14 @@ class CopyWithLineNumbersHelper {
                 sb.append("File: ").append(path).append("\n");
                 break;
             case COPY_WITH_LINE_NUMBERS_WITH_RELATIVE_FILE_PATH:
-                String projectBasePath = project.getBasePath();
-                if (projectBasePath == null) {
-                    sb.append("File: ").append(path).append("\n");
-                } else {
-                    sb.append("File: ").append(Paths.get(Objects.requireNonNull(projectBasePath)).relativize(Paths.get(path))).append("\n");
+                String projectBasePath = null;
+                if (project != null) {
+                    projectBasePath = project.getBasePath();
+                    if (projectBasePath == null) {
+                        sb.append("File: ").append(path).append("\n");
+                    } else {
+                        sb.append("File: ").append(Paths.get(Objects.requireNonNull(projectBasePath)).relativize(Paths.get(path))).append("\n");
+                    }
                 }
                 break;
         }
