@@ -61,7 +61,7 @@ class CopyWithLineNumbersHelper {
                 break;
         }
         for (int i = 0; i < lines.length; i++) {
-            sb.append(String.format("%5d: %s\n", startLine + i + 1, lines[i])); ;
+            sb.append(String.format("%5d: %s\n", startLine + i + 1, lines[i]));
         }
 
         final Clipboard clipBoard = editor.getComponent().getToolkit().getSystemClipboard();
