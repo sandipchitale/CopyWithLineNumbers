@@ -9,10 +9,6 @@ version = "1.0.10"
 
 repositories {
     mavenCentral()
-}
-
-repositories {
-    mavenCentral()
 
     intellijPlatform {
         defaultRepositories()
